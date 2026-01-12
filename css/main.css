@@ -1,15 +1,35 @@
 :root {
-    --primary-green: #9FE870;
-    --dark-bg: #252525;
-    --black-bg: #000000;
+    --bg-sage: #E6EBE0;
+    --bg-grey-light: #D9D9D9;
+    --bg-dark: #4A4A4A;
+    --text-dark: #1a1a1a;
     --text-white: #FFFFFF;
-    --card-bg: #FFFFFF;
+    --accent-green: #9FE870;
+    --btn-dark: #2A2A2A;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text-white);
-    background-color: var(--dark-bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-sage);
+    position: relative;
+}
+
+/* Monotone Noise Texture Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.25;
+    /* Increased opacity to 25% */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    /* Better blending for monotone effect */
 }
 
 h1,
@@ -19,29 +39,36 @@ h4,
 h5,
 h6 {
     font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-.btn-primary-custom {
-    background-color: var(--primary-green);
-    color: #000;
+.btn-pill-dark {
+    background: linear-gradient(90deg, #171717 0%, #7D7D7D 100%);
+    color: var(--accent-green);
     border: none;
     font-weight: 600;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 12px 32px;
+    border-radius: 50px;
+    /* Pill shape */
+    transition: all 0.3s ease;
 }
 
-.btn-primary-custom:hover {
-    background-color: #8cd463;
-    color: #000;
+.btn-pill-dark:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: var(--accent-green);
 }
 
-/* Section Specifics */
+/* Section/* Sections */
 .section-hero {
-    background-color: var(--dark-bg);
-    min-height: 80vh;
-    /* Approximate height from image */
+    background-color: var(--bg-sage);
+    min-height: 100vh;
+    /* Full screen height */
     display: flex;
     align-items: center;
+    position: relative;
+    padding-top: 80px;
+    /* Space for navbar */
     overflow: hidden;
 }
 
@@ -73,8 +100,9 @@ h6 {
 }
 
 .section-how-it-works {
-    background-color: var(--primary-green);
-    color: #000;
+    background-color: #F8F8F8;
+    color: var(--text-dark);
+    padding: 80px 0;
 }
 
 .section-subtitle {
@@ -82,49 +110,44 @@ h6 {
     line-height: 1.5;
 }
 
+.section-banner {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Specific banner button override if needed, but .btn-pill-dark handles it */
+
+.section-features {
+    background-color: #fff;
+    padding: 100px 0;
+}
+
 .section-benefits {
-    background-color: var(--black-bg);
-}
-
-.section-waitlist {
-    background-color: var(--black-bg);
-}
-
-.section-testimonials {
-    background-color: var(--dark-bg);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    padding: 100px 0;
 }
 
 .section-footer {
-    background-color: var(--dark-bg);
-    min-height: 50vh;
-    padding: 0 !important;
-    /* Override standard padding to allow full bleed */
-    overflow: hidden;
+    background-color: var(--bg-sage);
+    padding: 100px 0 40px;
+    color: var(--text-dark);
 }
 
-.card-custom {
-    border-radius: 12px;
-    padding: 1.5rem;
-    height: 100%;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    background-color: #fff;
+.benefits-card {
+    background-color: #F8F8F8;
+    /* Light background for V2 benefits cards */
     color: #000;
 }
 
-.card-custom .card-title {
-    font-size: 1.25rem;
-}
-
-.card-custom .card-text {
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* Modal Specifics */
+/* Waitlist Modal Overrides */
 .modal-content {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #222;
+    border: 1px solid #333;
 }
+
 
 .modal-content .form-control,
 .modal-content .input-group-text {

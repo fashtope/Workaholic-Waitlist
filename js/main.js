@@ -1,18 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Workaholic Waitlist App Initialized');
 
-    const waitlistButtons = document.querySelectorAll('.btn-primary-custom');
-    // Select the modal element
+    // Initialize Bootstrap modal instance if needed for programmatic control
     const waitlistModalElement = document.getElementById('waitlistModal');
-    // Initialize Bootstrap modal instance
-    // Note: We assume Bootstrap 5 is loaded globally
     const waitlistModal = new bootstrap.Modal(waitlistModalElement);
-
-    waitlistButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            waitlistModal.show();
-        });
-    });
 
     // Handle form submission (simulation)
     const waitlistForm = document.getElementById('waitlistForm');
